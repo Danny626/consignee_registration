@@ -1,1 +1,8 @@
-
+server:
+  port: ${SERVER_PORT}
+  address: ${SERVER_ADDRESS}
+  servlet:
+    context-path: /registroConsignatario
+spring:
+  config:
+    import: optional:file:.env[.properties]
