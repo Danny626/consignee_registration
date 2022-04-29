@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FilesStorageServiceImpl implements IFilesStorageService {
 
-    private final Path root = Paths.get("uploads");
+    private final Path root = Paths.get("/home/danny/documentUpload");
 
     @Override
     public void deleteAll() {
