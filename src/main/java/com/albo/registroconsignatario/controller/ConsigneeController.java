@@ -3,6 +3,7 @@ package com.albo.registroconsignatario.controller;
 import java.time.LocalDateTime;
 
 import com.albo.registroconsignatario.dto.ResponseMessage;
+import com.albo.registroconsignatario.exception.ModelAlreadyExistsException;
 import com.albo.registroconsignatario.model.Consignee;
 import com.albo.registroconsignatario.service.IConsigneeService;
 import com.albo.registroconsignatario.service.IFilesStorageService;
@@ -40,6 +41,11 @@ public class ConsigneeController {
             @RequestPart(value = "consignee", required = true) Consignee consignee,
             @RequestPart(value = "file", required = true) MultipartFile file
         ) {
+
+        // check if the document number already exists
+        if( consigneeService.findByDocumentNumber(consignee.getDocumentNumber()).isPresent() ) {
+            throw new ModelAlreadyExistsException("El número de documento ya se encuentra registrado");
+        }
 
         consignee.setCreatedAt(LocalDateTime.now());
 

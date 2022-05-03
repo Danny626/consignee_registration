@@ -19,11 +19,11 @@ public class ConsigneeServiceImpl implements IConsigneeService {
     @Override
     public Boolean deleteById(Long id) {
         if (!consigneeRepository.existsById(id)) {
-			return false;
-		}
+            return false;
+        }
 
-		consigneeRepository.deleteById(id);
-		return true;
+        consigneeRepository.deleteById(id);
+        return true;
     }
 
     @Override
@@ -40,5 +40,10 @@ public class ConsigneeServiceImpl implements IConsigneeService {
     public Consignee saveOrUpdate(Consignee t) {
         return consigneeRepository.save(t);
     }
-    
+
+    @Override
+    public Optional<Consignee> findByDocumentNumber(String documentNumber) {
+        return consigneeRepository.findByDocumentNumber(documentNumber);
+    }
+
 }
