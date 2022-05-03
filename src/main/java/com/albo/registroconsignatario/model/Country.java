@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 @Table(name = "country")
 public class Country {
     
-    private static final long serialVersionUID = 1L;
+    // private static final long serialVersionUID = 1L;
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +26,8 @@ public class Country {
     @Column(name = "code_country", nullable = false, unique = true)
 	private Integer codeCountry;
 
-    @Column(name = "name", nullable = false, unique = true)
-	private Integer name;
+    @Column(name = "name", nullable = false)
+	private String name;
 
     @JsonSerialize(using = ToStringSerializer.class)
 	@Column(name = "created_at")
@@ -49,11 +49,11 @@ public class Country {
         this.codeCountry = codeCountry;
     }
 
-    public Integer getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Integer name) {
+    public void setName(String name) {
         this.name = name;
     }
 

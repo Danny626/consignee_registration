@@ -20,6 +20,7 @@ public class RegistroConsignatarioApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... arg) throws Exception {
+		storageService.deleteAll();
 		storageService.init();
 	}
 

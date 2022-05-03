@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +30,8 @@ public class Consignee implements Serializable {
     @Column(name = "document_number", nullable = false, unique = true)
 	private String documentNumber;
 
-    @ManyToOne
-	@JoinColumn(name = "document_type", nullable = false, referencedColumnName = "document_type_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "document_type", nullable = false, referencedColumnName = "id")
 	private DocumentType documentType;
 
     @Column(name = "email", nullable = true)
@@ -46,7 +47,7 @@ public class Consignee implements Serializable {
 	private String documentImg;
 
     @ManyToOne
-	@JoinColumn(name = "country", nullable = true, referencedColumnName = "country_id")
+	@JoinColumn(name = "country", nullable = true, referencedColumnName = "id")
 	private Country country;
 
     @Column(name = "address", nullable = true)

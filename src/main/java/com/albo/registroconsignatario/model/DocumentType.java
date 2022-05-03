@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "document_type")
 public class DocumentType {
     
-    private static final long serialVersionUID = 1L;
+    // private static final long serialVersionUID = 1L;
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

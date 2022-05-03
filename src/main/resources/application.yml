@@ -2,7 +2,7 @@ server:
   port: ${SERVER_PORT}
   address: ${SERVER_ADDRESS}
   servlet:
-    context-path: /registroConsignatario
+    context-path: /consigneeRegistration
 spring:
   config:
     import: optional:file:.env[.properties]
@@ -10,3 +10,8 @@ spring:
     multipart:
       max-file-size: 5MB
       max-request-size: 5MB
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
